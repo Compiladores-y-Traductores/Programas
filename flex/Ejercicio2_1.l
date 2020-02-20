@@ -5,21 +5,21 @@ int lines = 0;
 %}
 
 %%
-"int"	{ printf("Es tipo entero\n");}
-"+"	{ printf("PLUS\n");  }
-"-"	{ printf("MINUS\n"); }
-"*"	{ printf("TIMES\n"); }
-"/"	{ printf("DIVIDE\n"); }
-"|"	{ printf("ABS\n"); }
-"="	{ printf("Asignacion =\n");}
+"int"	{ printf("Es tipo entero ");}
+"+"	{ printf(" Suma ");  }
+"-"	{ printf(" Resta "); }
+"*"	{ printf(" Multiplicacion "); }
+"/"	{ printf(" Division "); }
+"|"	{ printf(" Valor Absoluto"); }
+"="	{ printf(" Igual ");}
 " "	{ printf(" ");}
-"^" { printf("Elevacion\n"); }
-[0-9]+ 	{ printf("NUMBER %s\n", yytext); }
-[a-z]+	{ printf("Variable %s\n",yytext);}
-[A-Z]+	{ printf("Constante %s\n",yytext);}
-\n	{ printf("NEWLINE\n"); }
+"^" { printf("Elevacion "); }
+[0-9]+ 	{ printf("%s", yytext); }
+[a-z]+	{ printf("%s",yytext);}
+[A-Z]+	{ printf("%s",yytext);}
+\n	{ printf("\n Salto de Linea \n"); }
 [\t]    { }
-.	{ printf("Mystery character %s\n", yytext); }
+.	{ printf("Caracter no valido %s\n", yytext); }
 
 %%
 
