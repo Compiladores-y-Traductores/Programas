@@ -449,15 +449,14 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "fb1-2.l"
+#line 1 "fb1-4.l"
 /* even more like Unix wc */
-#line 4 "fb1-2.l"
+#line 4 "fb1-4.l"
 int chars = 0;
 int words = 0;
 int lines = 0;
-int numeros=0;
+#line 459 "lex.yy.c"
 #line 460 "lex.yy.c"
-#line 461 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -674,9 +673,9 @@ YY_DECL
 		}
 
 	{
-#line 9 "fb1-2.l"
+#line 8 "fb1-4.l"
 
-#line 680 "lex.yy.c"
+#line 679 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -735,71 +734,71 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 10 "fb1-2.l"
+#line 9 "fb1-4.l"
 { printf("Es una variable\n"); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 11 "fb1-2.l"
+#line 10 "fb1-4.l"
 { printf("Es una constante\n"); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 12 "fb1-2.l"
+#line 11 "fb1-4.l"
 {printf("Es un entero");}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 13 "fb1-2.l"
+#line 12 "fb1-4.l"
 { printf("Suma\n"); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 14 "fb1-2.l"
+#line 13 "fb1-4.l"
 { printf("Resta\n"); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 15 "fb1-2.l"
+#line 14 "fb1-4.l"
 { printf("Multiplicacion\n"); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 16 "fb1-2.l"
+#line 15 "fb1-4.l"
 { printf("Division\n"); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 17 "fb1-2.l"
+#line 16 "fb1-4.l"
 { printf("Valor absoluto\n"); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 18 "fb1-2.l"
+#line 17 "fb1-4.l"
 { printf("Numero %s\n", yytext); }
 	YY_BREAK
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 19 "fb1-2.l"
+#line 18 "fb1-4.l"
 { printf("NEWLINE\n"); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 20 "fb1-2.l"
+#line 19 "fb1-4.l"
 { }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 21 "fb1-2.l"
+#line 20 "fb1-4.l"
 { printf("Mystery character %s\n", yytext); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 23 "fb1-2.l"
+#line 23 "fb1-4.l"
 ECHO;
 	YY_BREAK
-#line 803 "lex.yy.c"
+#line 802 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1804,29 +1803,19 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 23 "fb1-2.l"
+#line 23 "fb1-4.l"
 
-void main(int argc, char **argv)
-{
-	yylex();
-    //printf("%8d%8d%8d\n", lines, words, chars);
-	FILE *fp;
-    int i=0;
-    char c;
-    fp=fopen(argv[1],"r");
-    while(!feof(fp)){
-        c = getc(fp);
-        i++;
-    }
-    rewind(fp);
-    char leida[i];
-    while(fgets(leida, i, fp)) {
-        printf("%s",leida);
-    }
-
-    //fgets(leida,i,fp);
-    fclose(fp);
-    //printf("\nCadena leida: %s\n",leida);
-    //system("PAUSE");
-    //return 0;
+main(argc, argv)
+int argc;
+char **argv;
+    {
+if(argc > 1) {
+if(!(yyin = fopen(argv[1], "r"))) {
+perror(argv[1]);
+return (1);
 }
+}
+yylex();
+printf("%8d%8d%8d\n", lines, words, chars);
+}
+
