@@ -15,8 +15,8 @@ int lines = 0;
 " "	{ printf(" ");}
 "^" { printf("Elevacion "); }
 [0-9]+ 	{ printf("%s", yytext); }
-[a-z]+	{ printf("%s",yytext);}
-[A-Z]+	{ printf("%s",yytext);}
+[a-z]+	{ printf("Variable %s",yytext);}
+[A-Z]+	{ printf("Constante %s",yytext);}
 \n	{ printf("\n Salto de Linea \n"); }
 [\t]    { }
 .	{ printf("Caracter no valido %s\n", yytext); }
